@@ -6,21 +6,21 @@ $ pushd .
 ~/h04d1n1/workspace ~
 $ source scripts/activate
 
-$ git clone https://github.com/${GITHUB_USERNAME}/lab04 projects/lab05
-Cloning into 'projects/lab05'...
+$ git clone https://github.com/${GITHUB_USERNAME}/lab04 projects/lab06
+Cloning into 'projects/lab06'...
 remote: Enumerating objects: 36, done.
 remote: Counting objects: 100% (36/36), done.
 remote: Compressing objects: 100% (23/23), done.
 remote: Total 36 (delta 5), reused 30 (delta 5), pack-reused 0 (from 0)
 Receiving objects: 100% (36/36), 14.39 KiB | 320.00 KiB/s, done.
 Resolving deltas: 100% (5/5), done.
-$ cd projects/lab05
+$ cd projects/lab06
 $ git remote remove origin
-$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab05
+$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab06
 
 $ mkdir third-party
 $ git submodule add https://github.com/google/googletest third-party/gtest
-Cloning into '/home/freeman/h04d1n1/workspace/projects/lab05/third-party/gtest'...
+Cloning into '/home/freeman/h04d1n1/workspace/projects/lab06/third-party/gtest'...
 remote: Enumerating objects: 27991, done.
 remote: Counting objects: 100% (234/234), done.
 remote: Compressing objects: 100% (149/149), done.
@@ -94,7 +94,7 @@ EOF
 $ cmake -H. -B_build -DBUILD_TESTS=ON
 -- Configuring done (0.0s)
 -- Generating done (0.0s)
--- Build files have been written to: /home/freeman/h04d1n1/workspace/projects/lab05/_build
+-- Build files have been written to: /home/freeman/h04d1n1/workspace/projects/lab06/_build
 $ cmake --build _build
 [ 16%] Built target print
 [ 25%] Building CXX object third-party/gtest/googletest/CMakeFiles/gtest.dir/src/gtest-all.cc.o
@@ -114,7 +114,7 @@ $ cmake --build _build
 [100%] Built target gmock_main
 $ cmake --build _build --target test
 Running tests...
-Test project /home/freeman/h04d1n1/workspace/projects/lab05/_build
+Test project /home/freeman/h04d1n1/workspace/projects/lab06/_build
     Start 1: check
 1/1 Test #1: check ............................   Passed    0.01 sec
 
@@ -123,7 +123,7 @@ Test project /home/freeman/h04d1n1/workspace/projects/lab05/_build
 Total Test time (real) =   0.01 sec
 
 $ _build/check
-Running main() from /home/freeman/h04d1n1/workspace/projects/lab05/third-party/gtest/googletest/src/gtest_main.cc
+Running main() from /home/freeman/h04d1n1/workspace/projects/lab06/third-party/gtest/googletest/src/gtest_main.cc
 [==========] Running 1 test from 1 test suite.
 [----------] Global test environment set-up.
 [----------] 1 test from Print
@@ -136,9 +136,9 @@ Running main() from /home/freeman/h04d1n1/workspace/projects/lab05/third-party/g
 [  PASSED  ] 1 test.
 $ cmake --build _build --target test -- ARGS=--verbose
 Running tests...
-UpdateCTestConfiguration  from :/home/freeman/h04d1n1/workspace/projects/lab05/_build/DartConfiguration.tcl
-UpdateCTestConfiguration  from :/home/freeman/h04d1n1/workspace/projects/lab05/_build/DartConfiguration.tcl
-Test project /home/freeman/h04d1n1/workspace/projects/lab05/_build
+UpdateCTestConfiguration  from :/home/freeman/h04d1n1/workspace/projects/lab06/_build/DartConfiguration.tcl
+UpdateCTestConfiguration  from :/home/freeman/h04d1n1/workspace/projects/lab06/_build/DartConfiguration.tcl
+Test project /home/freeman/h04d1n1/workspace/projects/lab06/_build
 Constructing a list of tests
 Done constructing a list of tests
 Updating test list for fixtures
@@ -148,10 +148,10 @@ Checking test dependency graph end
 test 1
     Start 1: check
 
-1: Test command: /home/freeman/h04d1n1/workspace/projects/lab05/_build/check
-1: Working Directory: /home/freeman/h04d1n1/workspace/projects/lab05/_build
+1: Test command: /home/freeman/h04d1n1/workspace/projects/lab06/_build/check
+1: Working Directory: /home/freeman/h04d1n1/workspace/projects/lab06/_build
 1: Test timeout computed to be: 10000000
-1: Running main() from /home/freeman/h04d1n1/workspace/projects/lab05/third-party/gtest/googletest/src/gtest_main.cc
+1: Running main() from /home/freeman/h04d1n1/workspace/projects/lab06/third-party/gtest/googletest/src/gtest_main.cc
 1: [==========] Running 1 test from 1 test suite.
 1: [----------] Global test environment set-up.
 1: [----------] 1 test from Print
@@ -168,7 +168,7 @@ test 1
 
 Total Test time (real) =   0.00 sec
 
-$ gsed -i 's/lab04/lab05/g' README.md
+$ gsed -i 's/lab04/lab06/g' README.md
 $ gsed -i 's/\(DCMAKE_INSTALL_PREFIX=_install\)/\1 -DBUILD_TESTS=ON/' .travis.yml
 $ gsed -i '/cmake --build _build --target install/a\
 - cmake --build _build --target test -- ARGS=--verbose
@@ -198,7 +198,7 @@ Delta compression using up to 8 threads
 Compressing objects: 100% (10/10), done.
 Writing objects: 100% (17/17), 5.06 KiB | 2.53 MiB/s, done.
 Total 17 (delta 0), reused 6 (delta 0), pack-reused 0 (from 0)
-To https://github.com/h04d1n1/lab05
+To https://github.com/h04d1n1/lab06
  * [new branch]      main -> main
  
 $ mkdir artifacts
