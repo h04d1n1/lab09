@@ -1,0 +1,10 @@
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/print.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/demo.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/package.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/package_source.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/edit_cache.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/rebuild_cache.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/list_install_components.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/install.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/install/local.dir
+/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14/CMakeFiles/install/strip.dir

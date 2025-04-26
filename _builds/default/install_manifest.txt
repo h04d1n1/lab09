@@ -1,0 +1,5 @@
+/home/freeman/h04d1n1/workspace/projects/lab07/_install/default/lib/libprint.a
+/home/freeman/h04d1n1/workspace/projects/lab07/_install/default/include/print.hpp
+/home/freeman/h04d1n1/workspace/projects/lab07/_install/default/cmake/print-config.cmake
+/home/freeman/h04d1n1/workspace/projects/lab07/_install/default/cmake/print-config-noconfig.cmake
+/home/freeman/h04d1n1/workspace/projects/lab07/_install/default/bin/demo

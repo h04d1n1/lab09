@@ -1,0 +1,23 @@
+Execute command: [
+  `which`
+  `cmake`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "which" "cmake"
+/usr/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "cmake" "--version"
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `--build`
+  `/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14`
+  `--`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "cmake" "--build" "/home/freeman/h04d1n1/workspace/projects/lab07/_builds/clang-cxx14" "--"
+[ 50%] Built target print
+[100%] Built target demo

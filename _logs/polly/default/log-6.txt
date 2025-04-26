@@ -1,0 +1,33 @@
+Execute command: [
+  `which`
+  `cmake`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "which" "cmake"
+/usr/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "cmake" "--version"
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `--build`
+  `/home/freeman/h04d1n1/workspace/projects/lab07/_builds/default`
+  `--target`
+  `install`
+  `--`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "cmake" "--build" "/home/freeman/h04d1n1/workspace/projects/lab07/_builds/default" "--target" "install" "--"
+[ 50%] Built target print
+[100%] Built target demo
+Install the project...
+-- Install configuration: ""
+-- Up-to-date: /home/freeman/h04d1n1/workspace/projects/lab07/_install/default/lib/libprint.a
+-- Up-to-date: /home/freeman/h04d1n1/workspace/projects/lab07/_install/default/include
+-- Up-to-date: /home/freeman/h04d1n1/workspace/projects/lab07/_install/default/include/print.hpp
+-- Up-to-date: /home/freeman/h04d1n1/workspace/projects/lab07/_install/default/cmake/print-config.cmake
+-- Up-to-date: /home/freeman/h04d1n1/workspace/projects/lab07/_install/default/cmake/print-config-noconfig.cmake
+-- Up-to-date: /home/freeman/h04d1n1/workspace/projects/lab07/_install/default/bin/demo

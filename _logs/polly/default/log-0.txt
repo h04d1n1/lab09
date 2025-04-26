@@ -1,0 +1,800 @@
+Execute command: [
+  `which`
+  `cmake`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "which" "cmake"
+/usr/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "cmake" "--version"
+cmake version 3.31.6
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `-H.`
+  `-B/home/freeman/h04d1n1/workspace/projects/lab07/_builds/default`
+  `-DCMAKE_TOOLCHAIN_FILE=/home/freeman/h04d1n1/workspace/projects/lab07/tools/polly/default.cmake`
+]
+[/home/freeman/h04d1n1/workspace/projects/lab07]> "cmake" "-H." "-B/home/freeman/h04d1n1/workspace/projects/lab07/_builds/default" "-DCMAKE_TOOLCHAIN_FILE=/home/freeman/h04d1n1/workspace/projects/lab07/tools/polly/default.cmake"
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:9 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:9 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_set_config_location.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:13 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_private_data.cmake:12 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:35 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_initialize.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/Hunter:36 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+-- [polly] Used toolchain: Default
+-- The C compiler identification is GNU 14.2.1
+-- The CXX compiler identification is GNU 14.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- [hunter] Calculating Toolchain-SHA1
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /home/freeman/projects/hunter
+-- [hunter] [ Hunter-ID: xxxxxxx | Toolchain-ID: bf48b43 | Config-ID: d14f46d ]
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:9 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:9 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_set_config_location.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:13 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:9 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:9 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_set_config_location.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_apply_gate_settings.cmake:13 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_finalize.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_load_from_cache.cmake:6 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_save_to_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_save_to_cache.cmake:4 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_save_to_cache.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_save_to_cache.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/projects/hunter/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/projects/hunter/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_save_to_cache.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/projects/hunter/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/projects/hunter/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+-- [hunter] GTEST_ROOT: /home/freeman/projects/hunter/_Base/xxxxxxx/bf48b43/d14f46d/Install (ver.: 1.15.2)
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+CMake Error at CMakeLists.txt:74 (add_executable):
+  add_executable cannot create target "demo" because another target with the
+  same name already exists.  The existing target is an executable created in
+  source directory "/home/freeman/h04d1n1/workspace/projects/lab07".  See
+  documentation for policy CMP0002 for more details.
+
+
+-- Configuring incomplete, errors occurred!

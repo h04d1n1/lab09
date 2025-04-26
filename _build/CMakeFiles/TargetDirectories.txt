@@ -1,9 +1,0 @@
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/print.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/package.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/package_source.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/edit_cache.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/rebuild_cache.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/list_install_components.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/install.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/install/local.dir
-/home/freeman/h04d1n1/workspace/projects/lab06/_build/CMakeFiles/install/strip.dir

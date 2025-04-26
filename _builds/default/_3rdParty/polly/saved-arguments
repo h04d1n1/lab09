@@ -1,0 +1,1 @@
+"cmake" "-H." "-B/home/freeman/h04d1n1/workspace/projects/lab07/_builds/default" "-DCMAKE_TOOLCHAIN_FILE=/home/freeman/h04d1n1/workspace/projects/lab07/tools/polly/default.cmake" "-DCMAKE_INSTALL_PREFIX=/home/freeman/h04d1n1/workspace/projects/lab07/_install/default"
