@@ -1,232 +1,1100 @@
+$ export GITHUB_TOKEN=<токен> # не указываю, чтобы git не ругался
 $ export GITHUB_USERNAME=h04d1n1
+$ export PACKAGE_MANAGER=yay
+$ export GPG_PACKAGE_NAME=gnupg # на archlinux так пакет называется
+
+$ sudo $PACKAGE_MANAGER -Sy xclip
+:: Synchronizing package databases...
+ core is up to date
+ extra                        7.7 MiB  2.77 MiB/s 00:03 [##############################] 100%
+ multilib                   136.0 KiB   303 KiB/s 00:00 [##############################] 100%
+warning: xclip-0.13-6 is up to date -- reinstalling
+resolving dependencies...
+looking for conflicting packages...
+
+Packages (1) xclip-0.13-6
+
+Total Installed Size:  0.03 MiB
+Net Upgrade Size:      0.00 MiB
+
+:: Proceed with installation? [Y/n] y
+(1/1) checking keys in keyring                          [##############################] 100%
+(1/1) checking package integrity                        [##############################] 100%
+(1/1) loading package files                             [##############################] 100%
+(1/1) checking for file conflicts                       [##############################] 100%
+(1/1) checking available disk space                     [##############################] 100%
+:: Processing package changes...
+(1/1) reinstalling xclip                                [##############################] 100%
+:: Running post-transaction hooks...
+(1/1) Arming ConditionNeedsUpdate...
+$ alias gsed=sed
+$ alias pbcopy='xclip -selection clipboard'
+$ alias pbpaste='xclip -selection clipboard -o'
 
 $ cd ${GITHUB_USERNAME}/workspace
 $ pushd .
 ~/h04d1n1/workspace ~/h04d1n1/workspace
 $ source scripts/activate
+$ go install github.com/aktau/github-release@latest
+go: downloading github.com/aktau/github-release v0.10.1
+go: finding module for package github.com/voxelbrain/goptions
+go: finding module for package github.com/dustin/go-humanize
+go: finding module for package github.com/github-release/github-release/github
+go: downloading github.com/dustin/go-humanize v1.0.1
+go: downloading github.com/voxelbrain/goptions v0.0.0-20180630082107-58cddc247ea2
+go: downloading github.com/github-release/github-release v0.10.1
+go: found github.com/dustin/go-humanize in github.com/dustin/go-humanize v1.0.1
+go: found github.com/github-release/github-release/github in github.com/github-release/github-release v0.10.1
+go: found github.com/voxelbrain/goptions in github.com/voxelbrain/goptions v0.0.0-20180630082107-58cddc247ea2
+go: finding module for package github.com/tomnomnom/linkheader
+go: finding module for package github.com/kevinburke/rest/restclient
+go: downloading github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80
+go: downloading github.com/kevinburke/rest v0.0.0-20240617045629-3ed0ad3487f0
+go: found github.com/kevinburke/rest/restclient in github.com/kevinburke/rest v0.0.0-20240617045629-3ed0ad3487f0
+go: found github.com/tomnomnom/linkheader in github.com/tomnomnom/linkheader v0.0.0-20180905144013-02ca5825eb80
 
-$ git clone https://github.com/${GITHUB_USERNAME}/lab07 lab08
-Cloning into 'lab08'...
-remote: Enumerating objects: 282, done.
-remote: Counting objects: 100% (282/282), done.
-remote: Compressing objects: 100% (134/134), done.
-remote: Total 282 (delta 115), reused 278 (delta 114), pack-reused 0 (from 0)
-Receiving objects: 100% (282/282), 174.99 KiB | 1.38 MiB/s, done.
-Resolving deltas: 100% (115/115), done.
-$ cd lab08
-$ git submodule update --init
-Submodule 'tools/polly' (https://github.com/ruslo/polly) registered for path 'tools/polly'
-Cloning into '/home/freeman/h04d1n1/workspace/lab08/tools/polly'...
-Submodule path 'tools/polly': checked out 'ef7e79c2c297d456f2742fd0b976f555d058d4e0'
+$ git clone https://github.com/${GITHUB_USERNAME}/lab08 projects/lab09
+Cloning into 'projects/lab09'...
+remote: Enumerating objects: 292, done.
+remote: Counting objects: 100% (292/292), done.
+remote: Compressing objects: 100% (139/139), done.
+remote: Total 292 (delta 118), reused 288 (delta 117), pack-reused 0 (from 0)
+Receiving objects: 100% (292/292), 179.38 KiB | 838.00 KiB/s, done.
+Resolving deltas: 100% (118/118), done.
+$ cd projects/lab09
 $ git remote remove origin
-$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab08
+$ git remote add origin https://github.com/${GITHUB_USERNAME}/lab09
 
-$ cat > Dockerfile <<EOF
-FROM ubuntu:20.04
-EOF
+$ gsed -i 's/lab08/lab09/g' README.md
 
-$ cat >> Dockerfile <<EOF
+$ $PACKAGE_MANAGER -S ${GPG_PACKAGE_NAME}
+$ gpg --list-secret-keys --keyid-format LONG
+$ gpg --full-generate-key
+gpg (GnuPG) 2.4.7; Copyright (C) 2024 g10 Code GmbH
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
 
-RUN apt update
-RUN apt install -yy gcc g++ cmake
-EOF
+Please select what kind of key you want:
+   (1) RSA and RSA
+   (2) DSA and Elgamal
+   (3) DSA (sign only)
+   (4) RSA (sign only)
+   (9) ECC (sign and encrypt) *default*
+  (10) ECC (sign only)
+  (14) Existing key from card
+Your selection? 1
+RSA keys may be between 1024 and 4096 bits long.
+What keysize do you want? (3072) 
+Requested keysize is 3072 bits
+Please specify how long the key should be valid.
+         0 = key does not expire
+      <n>  = key expires in n days
+      <n>w = key expires in n weeks
+      <n>m = key expires in n months
+      <n>y = key expires in n years
+Key is valid for? (0) 0
+Key does not expire at all
+Is this correct? (y/N) y
 
-$ cat >> Dockerfile <<EOF
+GnuPG needs to construct a user ID to identify your key.
 
-COPY . print/
-WORKDIR print
-EOF
+Real name: h04d1n1
+Email address: fedor.z1234@yandex.ru
+Comment: 
+You selected this USER-ID:
+    "h04d1n1 <fedor.z1234@yandex.ru>"
 
-$ cat >> Dockerfile <<EOF
+Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+We need to generate a lot of random bytes. It is a good idea to perform
+some other action (type on the keyboard, move the mouse, utilize the
+disks) during the prime generation; this gives the random number
+generator a better chance to gain enough entropy.
+gpg: revocation certificate stored as '/home/freeman/.gnupg/openpgp-revocs.d/2E039652A85F61D27ADF880C3472435DAC1CDE1F.rev'
+public and secret key created and signed.
 
-RUN cmake -H. -B_build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=_install
-RUN cmake --build _build
-RUN cmake --build _build --target install
-EOF
+pub   rsa3072 2025-04-29 [SC]
+      2E039652A85F61D27ADF880C3472435DAC1CDE1F
+uid                      h04d1n1 <fedor.z1234@yandex.ru>
+sub   rsa3072 2025-04-29 [E]
+$ gpg -K ${GITHUB_USERNAME}
+gpg: checking the trustdb
+gpg: marginals needed: 3  completes needed: 1  trust model: pgp
+gpg: depth: 0  valid:   1  signed:   0  trust: 0-, 0q, 0n, 0m, 0f, 1u
+sec   rsa3072 2025-04-29 [SC]
+      2E039652A85F61D27ADF880C3472435DAC1CDE1F
+uid           [ultimate] h04d1n1 <fedor.z1234@yandex.ru>
+ssb   rsa3072 2025-04-29 [E]
+$ GPG_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG | grep ssb | tail -1 | awk '{print $2}' | awk -F'/' '{print $2}')
+$ GPG_SEC_KEY_ID=$(gpg --list-secret-keys --keyid-format LONG | grep sec | tail -1 | awk '{print $2}' | awk -F'/' '{print $2}')
+$ gpg --armor --export ${GPG_KEY_ID} | pbcopy
+$ pbpaste
+-----BEGIN PGP PUBLIC KEY BLOCK-----
 
-$ cat >> Dockerfile <<EOF
+mQGNBGgQn7IBDADXAYwd+fs2Kf8vc/5G0Mtn/YNRlZoeSTtLQ6uJzXDkouPPHBn1
+5MnPQ9mphfltnupr5U72MnLIYM2K16ss34ErBPzsO2Rc7JdBcHlFqXt/fY7rolFU
+QaTQ5RclC2dQgKijeHmuiwkqKN09Li+QsQcY2sgoB4BrLdWza5c3A+u2As0VRrfG
+pBnD9p3sjKdSio0MmT8FgziJtSAAmiDatL5USuImTlExeeYjYKBUoplByE7eNSZQ
+9XnDN12uQ5FctSW17iaYdbQosT8Yj44vsfapCT5yuUJzBdkdgx+Q4fxrBGY+MqfD
+RwqFXzsovms8vdQiOQq8Xevr8QaSYchU82Qhoeq6dbCDAJg+oiE32ryYMv5PJGXb
+C55EmP616tGa6dfeF3TykqkEQtGBhye+1SVDRk3/DK+6kb4SN4bAiEdp/B500pks
+s+6Fyn0gVYFhhKRNCyPHouTBlqVh03RhGo3BBtJx6643G1wS3O9TYMnjO6GIzsyx
+Jy9vPxguCbweb2MAEQEAAbQfaDA0ZDFuMSA8ZmVkb3IuejEyMzRAeWFuZGV4LnJ1
+PokB0QQTAQgAOxYhBC4DllKoX2HSet+IDDRyQ12sHN4fBQJoEJ+yAhsDBQsJCAcC
+AiICBhUKCQgLAgQWAgMBAh4HAheAAAoJEDRyQ12sHN4fLrQL/jtSWZ1TvugaCE0o
+xywpPazi/DbnXoxUBamXM0iTYVkdywX3d8+P2U1UgV8JGGBr/AofWtBTDm/zwJwq
+O1SRap+zcT5hogOW8irv7LNCCtsSS+qvL7nMqIEY1Sk8h7241XTHsductntMYztI
+alWiT45tjPldFND9IVhlR4sluLwFgM+HpUnnRJK3sWyY8vD+6YwuNMtYc0QKNjJd
+WlM5kuy3J8Znss7rdotSkL7Mxt4BcLQ1fpjt894WPD83j3S09jE0yAwOI1u90IUQ
+eHaf8J13FDeI3E7Kbh+l/jXTGskUVFwqCjsG9CDh5MkMLqxMJxAh+YErcW5z4Esn
+cprf+rr03EcSW/MO0rl0Xa7gHSB6cuxSjscKwa1j4IgLBMgTKXiZYh6Uj9AH6DtA
+7G9V0nK2NFs8H2Z2v4ZMAXjanq9duoQF5+A6pPBYNB8gRtf+2rNXy/Hcv3j+jlIM
+hYwkyEoHkgq6nq8my9gTbFNxACCvA77SlQHsFn24TuznO1KZqrkBjQRoEJ+yAQwA
+vG0dry+2o2f+lpe/oLED/Fj6+ZQ+sjUzZZm02GmikNWw0m2En5PlAqgnQZVcs1Qi
+UKVgW2D3aSW6NEAbaYImbCu1wLwZLIGKckKzuJp352HsSNxNJGosRIDLsNpFJCO6
+Ui6FxiGmHRWV+TZr5XuyjHdqrgWgc2+Nx4YlGBFUP7ruSJ6tyznbnvt+aI+biVYt
+xjZvgquwlrLrrXE8DdpayoTQQg98b3Xs2m+UBAufOTckqIQaXK46J6NcdZvIzJU9
+AXIqw1F3sqcea5ZzFatpkdjh2UieXXg3Wva/WBfmJEvHTINhSEBpTn1GY13ztKb7
+UTZx70r+jU3fn16xNMCgk8vchGA6kzyRmCOrsq8aLFn+OSn2nM7JdE7jVDI9jOkW
+K330jV39lbyVV2xtyQCagl1Kl11Gdz2G1KxxF7oFQCTyv7ieb7uzsT+Ryqk19J1S
+VpQdGfRhJhuj0yE1cKoGABT6lB5OyajXvPxGXx6upOgHXPSMqyYK5LTzT5/V1Ynv
+ABEBAAGJAbYEGAEIACAWIQQuA5ZSqF9h0nrfiAw0ckNdrBzeHwUCaBCfsgIbDAAK
+CRA0ckNdrBzeH+nIC/9jKy6uPT3AuZBFOD3AjX2dT3jEtldc8w24uT7FtB70/Red
+eZ/daobjI8jU/CadDtxpaFulzJ0MAxaJUQ+ed4wNFoFI0mI0yxNgS6ZG84CwkErz
+HnOxiWYvcD7X/8rFOt2OyOYgL9V047SaGe7r8PzYKAwXN+iYa5btryZgn++TVoCB
+BL9kHMXS8lAC44+yagVPhCtyz01rge8cugUNCw0FAOzgR3XVN62+ASfb22QHztQF
+9AdF8mpylsDLuLrtIrsPZdFcf4Wuz4f3xc9BmksA7Rc7wndSeTMu9lJ8tMw3NK67
+A9ME61hgQc3qxTS5Rlvl0RO1UsSrdkToInE4hrbyWxepm2u8vOoJqt10ReCHLj8h
+3eSATSpd+pS31X2BTEVaLz0W162OS+cOMVqB4RYDKxvYqeoG9NsH+x3r9cFJr4ET
+7hOdYk0FsFoifY99J4MyPwu0+ZJvi5xw/ilnjHAdA6cI/NcxIT1n8mwb6mU2msTe
+gmOSXi6D4R5iCprRMd0=
+=kZ1g
+-----END PGP PUBLIC KEY BLOCK-----
+$ open https://github.com/settings/keys
+Using default fileManager (gio command) opening ...
+# Создал там новый ключ GPG. Записал туда вывод предпоследней команды
+$ git config user.signingkey ${GPG_SEC_KEY_ID}
+$ git config gpg.program gpg
 
-ENV LOG_PATH /home/logs/log.txt
-EOF
+$ test -r ~/.bash_profile && echo 'export GPG_TTY=$(tty)' >> ~/.bash_profile
+$ echo 'export GPG_TTY=$(tty)' >> ~/.profile
 
-$ cat >> Dockerfile <<EOF
+$ cmake -H. -B_build -DCPACK_GENERATOR="TGZ"
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
 
-VOLUME /home/logs
-EOF
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
 
-$ cat >> Dockerfile <<EOF
 
-WORKDIR _install/bin
-EOF
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
 
-$ cat >> Dockerfile <<EOF
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
 
-ENTRYPOINT ./demo
-EOF
 
-$ sudo docker build -t logger .
-DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
-            Install the buildx component to build images with BuildKit:
-            https://docs.docker.com/go/buildx/
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
 
-Sending build context to Docker daemon  6.871MB
-Step 1/12 : FROM ubuntu:20.04
- ---> b7bab04fd9aa
-Step 2/12 : RUN apt update
- ---> Using cache
- ---> cc2969c637d0
-Step 3/12 : RUN apt install -yy gcc g++ cmake
- ---> Using cache
- ---> 1143fe95b467
-Step 4/12 : COPY . print/
- ---> Using cache
- ---> 7e6d9c7aa222
-Step 5/12 : WORKDIR print
- ---> Using cache
- ---> 0f6a4ae3a78c
-Step 6/12 : RUN cmake -H. -B_build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=_install
- ---> Using cache
- ---> 56002176ccc1
-Step 7/12 : RUN cmake --build _build
- ---> Using cache
- ---> 16abc4459559
-Step 8/12 : RUN cmake --build _build --target install
- ---> Using cache
- ---> 5142dfee7b88
-Step 9/12 : ENV LOG_PATH /home/logs/log.txt
- ---> Using cache
- ---> a6ad5ffcf3fa
-Step 10/12 : VOLUME /home/logs
- ---> Using cache
- ---> 29787253717f
-Step 11/12 : WORKDIR _install/bin
- ---> Using cache
- ---> d834e69a2503
-Step 12/12 : ENTRYPOINT ./demo
- ---> Using cache
- ---> 966a71717d56
-Successfully built 966a71717d56
-Successfully tagged logger:latest
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:9 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
 
-$ docker images
-REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
-logger       latest    966a71717d56   54 seconds ago   431MB
-<none>       <none>    6ceb5803f087   9 minutes ago    340MB
-<none>       <none>    d9faf192ecb4   55 minutes ago   340MB
-ubuntu       20.04     b7bab04fd9aa   2 weeks ago      72.8MB
-ubuntu       18.04     f9a80a55f492   23 months ago    63.2MB
 
-$ mkdir logs
-$ docker run -it -v "$(pwd)/logs/:/home/logs/" logger
-text1
-text2
-text3
-<C-D>
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
 
-$ docker inspect logger
-[
-    {
-        "Id": "sha256:966a71717d562ed704f29270415d49e247be718e940885adac8d37d5d21b78d8",
-        "RepoTags": [
-            "logger:latest"
-        ],
-        "RepoDigests": [],
-        "Parent": "sha256:d834e69a2503fb5a5818be229ca3235a17377fd845e5460a68dbe09b0996dce4",
-        "Comment": "",
-        "Created": "2025-04-28T09:48:15.594284869Z",
-        "DockerVersion": "28.1.1",
-        "Author": "",
-        "Config": {
-            "Hostname": "",
-            "Domainname": "",
-            "User": "",
-            "AttachStdin": false,
-            "AttachStdout": false,
-            "AttachStderr": false,
-            "Tty": false,
-            "OpenStdin": false,
-            "StdinOnce": false,
-            "Env": [
-                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-                "LOG_PATH=/home/logs/log.txt"
-            ],
-            "Cmd": null,
-            "Image": "sha256:d834e69a2503fb5a5818be229ca3235a17377fd845e5460a68dbe09b0996dce4",
-            "Volumes": {
-                "/home/logs": {}
-            },
-            "WorkingDir": "/print/_install/bin",
-            "Entrypoint": [
-                "/bin/sh",
-                "-c",
-                "./demo"
-            ],
-            "OnBuild": null,
-            "Labels": {
-                "org.opencontainers.image.ref.name": "ubuntu",
-                "org.opencontainers.image.version": "20.04"
-            }
-        },
-        "Architecture": "amd64",
-        "Os": "linux",
-        "Size": 431393692,
-        "GraphDriver": {
-            "Data": {
-                "LowerDir": "/var/lib/docker/overlay2/535647d4f466ddc56179388979a7ce8df906292d2a9885ca9ba7f91144b805d6/diff:/var/lib/docker/overlay2/b6b61b4f4550dc8f4409a2cd77015fafa7ef467ebbdc3a5a8e60e9f4d59e768c/diff:/var/lib/docker/overlay2/d08a4efb122c6d79e0a285f047a13daa82cd8887b1a4a4f0ed8d2dd5c8fc4eea/diff:/var/lib/docker/overlay2/c94596d03cd79ec71d93c10995879620c6a4053b89926e12dff3192a7bc7b604/diff:/var/lib/docker/overlay2/ab1f44a2ec6ab4948cd5ae2b4b7839656ee96b14b832883cb5caf3a7c403669f/diff:/var/lib/docker/overlay2/66d4545933bd7a75d25e33eea8f5daea982a91c23e5edbc0a628e98510289387/diff",
-                "MergedDir": "/var/lib/docker/overlay2/7a7a32fa3dfd35c7db4d33d18cd76734792b13d4cdff1566ef44d7717b6e3c7b/merged",
-                "UpperDir": "/var/lib/docker/overlay2/7a7a32fa3dfd35c7db4d33d18cd76734792b13d4cdff1566ef44d7717b6e3c7b/diff",
-                "WorkDir": "/var/lib/docker/overlay2/7a7a32fa3dfd35c7db4d33d18cd76734792b13d4cdff1566ef44d7717b6e3c7b/work"
-            },
-            "Name": "overlay2"
-        },
-        "RootFS": {
-            "Type": "layers",
-            "Layers": [
-                "sha256:470b66ea5123c93b0d5606e4213bf9e47d3d426b640d32472e4ac213186c4bb6",
-                "sha256:3188d1f559adbd8cb797a696dc15e3fe1e91d2eeff319960360d60db92d710ae",
-                "sha256:d60df692e99a9f267cb9d38cf339f8629f372c763d70fa071136688b30aad1bf",
-                "sha256:cee242d7db70b2896fd3cd12a8501bf02da7fd8e588adfba577da62b5975ba31",
-                "sha256:a94821ff798f6398d74eb749f24675c43a589169f83aff89caef1e85ca8c3616",
-                "sha256:a960c8217d7fb620799e22f639304d011dd18f150e2d2b7ec980003828782593",
-                "sha256:0b6745f78b9f5d85f91d550588ede6fbd34c8ec91d092486bc9a3aec1b7b993e"
-            ]
-        },
-        "Metadata": {
-            "LastTagTime": "2025-04-28T12:48:19.082568005+03:00"
-        }
-    }
-]
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
 
-$ cat logs/log.txt
-text1
-text2
-text3
 
-$ gsed -i 's/lab07/lab08/g' README.md
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
 
-$ vim .travis.yml
-/lang<CR>o
-services:
-- docker<ESC>
-jVGdo
-script:
-- docker build -t logger .<ESC>
-:wq
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
 
-$ git add Dockerfile
-$ git add .travis.yml
-$ git commit -m"adding Dockerfile"
-[main 37b4032] adding Dockerfile
- 4 files changed, 26 insertions(+), 13 deletions(-)
- create mode 100644 Dockerfile
- create mode 100644 logs/log.txt
-$ git push origin master
-Enumerating objects: 289, done.
-Counting objects: 100% (289/289), done.
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:9 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_set_config_location.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:13 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:34 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_private_data.cmake:12 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:35 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_initialize.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/Hunter:36 (include)
+  cmake/HunterGate.cmake:540 (include)
+  CMakeLists.txt:3 (HunterGate)
+
+
+-- The C compiler identification is GNU 14.2.1
+-- The CXX compiler identification is GNU 14.2.1
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- [hunter] Calculating Toolchain-SHA1
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+
+
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /home/freeman/.hunter
+-- [hunter] [ Hunter-ID: 26c79d5 | Toolchain-ID: bf48b43 | Config-ID: d14f46d ]
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:9 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:9 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_set_config_location.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:13 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:9 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_config_sha1.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:9 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_toolchain_sha1.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:10 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_set_config_location.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_apply_gate_settings.cmake:13 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_calculate_self.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_finalize.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_cache_run.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_load_from_cache.cmake:6 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:22 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_save_to_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_create_cache_meta_directory.cmake:5 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_save_to_cache.cmake:4 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_save_to_cache.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_save_to_cache.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+CMake Deprecation Warning at /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_lock_directory.cmake:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.10 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
+  to tell CMake that the project requires at least <min> but has been updated
+  to work with policies introduced by <max> or earlier.
+Call Stack (most recent call first):
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_make_directory.cmake:7 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_save_to_cache.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_download.cmake:26 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/projects/GTest/hunter.cmake:8 (include)
+  /home/freeman/.hunter/_Base/Download/Hunter/0.25.8/26c79d5/Unpacked/cmake/modules/hunter_add_package.cmake:62 (include)
+  CMakeLists.txt:26 (hunter_add_package)
+
+
+-- [hunter] GTEST_ROOT: /home/freeman/.hunter/_Base/26c79d5/bf48b43/d14f46d/Install (ver.: 1.15.2)
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+-- Configuring done (1.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/freeman/h04d1n1/workspace/projects/lab09/_build
+$ cmake --build _build --target package
+[ 25%] Building CXX object CMakeFiles/print.dir/sources/print.cpp.o
+[ 50%] Linking CXX static library libprint.a
+[ 50%] Built target print
+[ 75%] Building CXX object CMakeFiles/demo.dir/demo/main.cpp.o
+[100%] Linking CXX executable demo
+[100%] Built target demo
+Run CPack packaging tool...
+CPack: Create package using TGZ
+CPack: Install projects
+CPack: - Run preinstall target for: print
+CPack: - Install project: print []
+CPack: Create package
+CPack: - package: /home/freeman/h04d1n1/workspace/projects/lab09/_build/print-0.1.0.0-Linux.tar.gz generated.
+
+$ git tag -s v0.1.0.0
+$ git tag -v v0.1.0.0
+object 49abec24363108acffcbadaa75ab9bf2e6e70e4a
+type commit
+tag v0.1.0.0
+tagger h04d1n1 <fedor.z1234@yandex.ru> 1745920935 +0300
+
+tag v0.1.0.0
+gpg: Signature made Tue 29 Apr 2025 01:02:57 PM MSK
+gpg:                using RSA key 2E039652A85F61D27ADF880C3472435DAC1CDE1F
+gpg: Good signature from "h04d1n1 <fedor.z1234@yandex.ru>" [ultimate]
+$ git show v0.1.0.0
+tag v0.1.0.0
+Tagger: h04d1n1 <fedor.z1234@yandex.ru>
+Date:   Tue Apr 29 13:02:15 2025 +0300
+
+tag v0.1.0.0
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAABCAAdFiEELgOWUqhfYdJ634gMNHJDXawc3h8FAmgQo9EACgkQNHJDXawc
+3h9GHwv/XY/6BNfNPGIicbxkTScG5chWgg5QORbn7+BxRUG3VddGPfqD6gufpoX8
+ffhUYD706sIuuSI19yP85Rljbu58yxv0rAtdoYO36OTIwnMM1qhYmLI2/uvTPEbP
+BP5hmzERjn/F5UKulo6uvBhDLCPsvpDHt4sKlL6okpzIRCUGUE7qvAaZ7NAebHtO
+W7cyYdq6LrGYMRHR3f3UbsRAedUQLKi8glQqrgK5tSvGoNFp1Efj7OlRtruzQXCH
+GjKT9N88wzrldmqb6nS2nnUBQCNFgetEAJ7vaeEfY53jsoTm7jp76EgbaME+lFmH
+xkjbPt/eZQg/zRsQjeOqsOfNqjd0kRG6pPln9ld7BCnos7aCRldkwQY7d62NVlry
+IRGW13JVTBhoHtCaeas9SsWIKJ4nF6KKRk/kUAxLbk+7TxKBiTLROSNngIP/EFFd
+e+xQNSe7w1BvoRH7tdJKrkGyNBXCsXg2V4mvk+qRKVi4o7B8wTWt0LZn0D5p45vL
+2mNejIi/
+=7G+/
+-----END PGP SIGNATURE-----
+
+commit 49abec24363108acffcbadaa75ab9bf2e6e70e4a (HEAD -> main, tag: v0.1.0.0)
+Author: h04d1n1 <93523461+h04d1n1@users.noreply.github.com>
+Date:   Mon Apr 28 12:57:16 2025 +0300
+
+    Update README.md
+
+diff --git a/README.md b/README.md
+index 6a76314..ba3b15f 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3311 +1,232 @@
+ $ export GITHUB_USERNAME=h04d1n1
+-$ alias gsed=sed
+ 
+ $ cd ${GITHUB_USERNAME}/workspace
+ $ pushd .
+ ~/h04d1n1/workspace ~/h04d1n1/workspace
+ $ source scripts/activate
+ 
+-$ git clone https://github.com/${GITHUB_USERNAME}/lab06 projects/lab07
+-Cloning into 'projects/lab07'...
+-remote: Enumerating objects: 98, done.
+-remote: Counting objects: 100% (98/98), done.
+-remote: Compressing objects: 100% (66/66), done.
+
+# Дальше можно было листать и скопировать, но там изменения с прошлой лабораторной работы, а их очень много
+
+$ git push origin main --tags
+Enumerating objects: 293, done.
+Counting objects: 100% (293/293), done.
 Delta compression using up to 8 threads
-Compressing objects: 100% (138/138), done.
-Writing objects: 100% (289/289), 175.65 KiB | 35.13 MiB/s, done.
-Total 289 (delta 117), reused 281 (delta 115), pack-reused 0 (from 0)
-remote: Resolving deltas: 100% (117/117), done.
-To https://github.com/h04d1n1/lab08
+Compressing objects: 100% (139/139), done.
+Writing objects: 100% (293/293), 179.96 KiB | 89.98 MiB/s, done.
+Total 293 (delta 118), reused 292 (delta 118), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (118/118), done.
+To https://github.com/h04d1n1/lab09
  * [new branch]      main -> main
+ * [new tag]         v0.1.0.0 -> v0.1.0.0
+ 
+$ github-release --version
+github-release v0.10.1
+$ github-release info -u ${GITHUB_USERNAME} -r lab09
+tags:
+- v0.1.0.0 (commit: https://api.github.com/repos/h04d1n1/lab09/commits/49abec24363108acffcbadaa75ab9bf2e6e70e4a)
+releases:
+$ github-release release \
+    --user ${GITHUB_USERNAME} \
+    --repo lab09 \
+    --tag v0.1.0.0 \
+    --name "libprint" \
+    --description "my first release"
+    
+$ export PACKAGE_OS=`uname -s` PACKAGE_ARCH=`uname -m` 
+$ export PACKAGE_FILENAME=print-${PACKAGE_OS}-${PACKAGE_ARCH}.tar.gz
+$ github-release upload \
+    --user ${GITHUB_USERNAME} \
+    --repo lab09 \
+    --tag v0.1.0.0 \
+    --name "${PACKAGE_FILENAME}" \
+    --file _build/*.tar.gz
+    
+$ github-release info -u ${GITHUB_USERNAME} -r lab09
+tags:
+- v0.1.0.0 (commit: https://api.github.com/repos/h04d1n1/lab09/commits/49abec24363108acffcbadaa75ab9bf2e6e70e4a)
+releases:
+- v0.1.0.0, name: 'libprint', description: 'my first release', id: 215431279, tagged: 29/04/2025 at 10:02, published: 29/04/2025 at 10:21, draft: ✗, prerelease: ✗
+  - artifact: print-Linux-x86_64.tar.gz, downloads: 0, state: uploaded, type: application/octet-stream, size: 5.8 kB, id: 250383790
+$ wget https://github.com/${GITHUB_USERNAME}/lab09/releases/download/v0.1.0.0/${PACKAGE_FILENAME}
+--2025-04-29 13:24:38--  https://github.com/h04d1n1/lab09/releases/download/v0.1.0.0/print-Linux-x86_64.tar.gz
+Loaded CA certificate '/etc/ssl/certs/ca-certificates.crt'
+Resolving github.com (github.com)... 140.82.121.4
+Connecting to github.com (github.com)|140.82.121.4|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://objects.githubusercontent.com/github-production-release-asset-2e65be/974230749/bed9779e-cc0a-4494-9728-1c1ee003b9ff?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250429%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250429T102439Z&X-Amz-Expires=300&X-Amz-Signature=4ff06a6c7662dcf833dd0eda731c21713f26c39b6810ec3e047a5e5bf2624a21&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3Dprint-Linux-x86_64.tar.gz&response-content-type=application%2Foctet-stream [following]
+--2025-04-29 13:24:39--  https://objects.githubusercontent.com/github-production-release-asset-2e65be/974230749/bed9779e-cc0a-4494-9728-1c1ee003b9ff?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=releaseassetproduction%2F20250429%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250429T102439Z&X-Amz-Expires=300&X-Amz-Signature=4ff06a6c7662dcf833dd0eda731c21713f26c39b6810ec3e047a5e5bf2624a21&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3Dprint-Linux-x86_64.tar.gz&response-content-type=application%2Foctet-stream
+Resolving objects.githubusercontent.com (objects.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to objects.githubusercontent.com (objects.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5787 (5.7K) [application/octet-stream]
+Saving to: ‘print-Linux-x86_64.tar.gz’
+
+print-Linux-x86_64.tar. 100%[============================>]   5.65K  --.-KB/s    in 0.01s   
+
+2025-04-29 13:24:40 (474 KB/s) - ‘print-Linux-x86_64.tar.gz’ saved [5787/5787]
+$ tar -ztf ${PACKAGE_FILENAME}
+print-0.1.0.0-Linux/cmake/
+print-0.1.0.0-Linux/cmake/print-config.cmake
+print-0.1.0.0-Linux/cmake/print-config-noconfig.cmake
+print-0.1.0.0-Linux/bin/
+print-0.1.0.0-Linux/bin/demo
+print-0.1.0.0-Linux/lib/
+print-0.1.0.0-Linux/lib/libprint.a
+print-0.1.0.0-Linux/include/
+print-0.1.0.0-Linux/include/print.hpp
+
